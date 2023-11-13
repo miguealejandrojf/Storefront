@@ -6,10 +6,10 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="x-icon" href="Store-front-logo%202.jpeg">
-  <link rel="stylesheet" href="resources/Css/yellow-box.css">
-  <link rel="stylesheet" href="resources/Css/general.css">
-  <link rel="stylesheet" href="resources/Css/header.css">
-  <link rel="stylesheet" href="resources/Css/second-section.css">
+  <link rel="stylesheet" href="static/resources/Css/yellow-box.css">
+  <link rel="stylesheet" href="static/resources/Css/general.css">
+  <link rel="stylesheet" href="static/resources/Css/header.css">
+  <link rel="stylesheet" href="static/resources/Css/second-section.css">
   <title>Store Front</title>
 </head>
 <body>
@@ -23,10 +23,12 @@
           <button class="support-button">Support</button>
         </div>
         <div class="profile-container">
-          <button class="profile-button"><img class="profile-pic"  src="resources/icons/profile-icon2.svg"></button>
+          <a href="{{ url_for('login')}}">
+            <button class="profile-button"><img class="profile-pic"  src="static/resources/icons/profile-icon2.svg" ></button>
+          </a>
         </div>
         <div class="home-container">
-          <button class="home-button"><img class="home-pic" src="resources/icons/home-icon.svg"></button>
+          <button class="home-button"><img class="home-pic" src="static/resources/icons/home-icon.svg"></button>
         </div>
       </div>
 
