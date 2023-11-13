@@ -1,0 +1,72 @@
+.first-section{
+    position: relative;
+  }
+  .top-header{
+    height: 80px;
+    width: 800px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    right: 0;
+    margin-right: 40px;
+    margin-top: 50px;
+    justify-content: center;
+  
+  }
+  .right-side {
+    display: flex;
+  }
+  
+  .about-button{
+    height: 54px;
+    width: 155px;
+    border-radius: 77px;
+    background-color:rgba(249,240,56,255);
+    border-width: 0;
+    font-family:"Trebuchet MS",sans-serif ;
+    font-size: 21px;
+    font-weight: 500;
+    flex: 1;
+    margin-right: 17px;
+  
+  }
+  .support-button{
+    height: 54px;
+    width: 155px;
+    border-radius: 77px;
+    background-color:rgba(249,240,56,255);
+    border-width: 0;
+    font-family:"Trebuchet MS",sans-serif ;
+    font-size: 21px;
+    font-weight: 500;
+    flex: 1;
+    margin-right: 17px;
+  }
+  .profile-button{
+    height: 54px;
+    width: 54px;
+    border-radius: 27px;
+    background-color:rgba(249,240,56,255);
+    border-width: 0;
+    flex: 1;
+    margin-right: 17px
+  
+  
+  }
+  .home-button{
+    height: 54px;
+    width: 54px;
+    border-radius: 27px;
+    background-color:rgba(249,240,56,255);
+    border-width: 0;
+    flex: 1;
+  
+  
+  }
+  .profile-pic{
+    height: 28px;
+  }
+  .home-pic{
+    height: 28px;
+  }
+  
