@@ -7,6 +7,9 @@
 
 body{
     background: rgb(233, 233, 233);
+    /* background-color: #328f8a; */
+    /* background: lightgreen; */
+    /* background-image: linear-gradient(45deg,#328f8a,#08ac4b); */
 }
 /* dont like */
 .container{ 
@@ -22,6 +25,11 @@ nav{
     width: 280px;
     height: 97vh;
     background: #fff;
+    /* background: rgb(106, 215, 106); */
+    border-radius: 5px;
+}
+h1{
+    color: #17B169;
 }
  
 .navbar{
@@ -50,6 +58,7 @@ li a:hover{
 }
 
 nav i{
+    color: #17B169;
     width: 40px;
     font-size: 15px;
 }
@@ -75,13 +84,15 @@ nav i{
 
 .search-bar input{
     padding: 5px;
-    margin-left: 20px;
+    margin-left: 22px;
     width: 500px;
     border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
 }
 
 .search-bar input:focus{
-    border: 1px solid blueviolet;
+    /* change color */
+    border: 1px solid #17B169;
 }
 
 .search-bar select{
@@ -96,15 +107,68 @@ nav i{
 }
 
 .inventory-count{
+    font-size: 15px;
     padding: 10px;
     margin-top: 1.3rem;
     margin-left: 20px;
 }
 
-p{
-    font-size: 15px;
+p span{
+    /* change color */
+    color: #17B169;
 }
 
-p span{
-    color: purple;
+.inventory{
+    margin-top: 20px;
+    text-transform: capitalize;
 }
+
+.inventory-list{
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px black;
+    margin-top: 10px;
+    margin-left: 3%;
+    padding: 10px;
+    width: 100%;
+}
+
+.table{
+    border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    font-size: 15px;
+    margin: 25px 0;
+    min-width: 100%;
+    overflow: hidden;
+}
+
+table thead tr{
+    color: #fff;
+    background: #17B169;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table th, .table td{
+    padding: 12px 15px;;
+}
+
+.table tbody tr{
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-of-type(even){
+    background: #f3f3f3;
+}
+
+.table tbody tr:last-of-type{
+    border-bottom: 2px solid #17B169;
+}
+
+.table button:hover{
+    cursor: pointer;
+    border: black;
+    box-shadow: 1px 1px;
+    border-radius: 2px;
+}
+
