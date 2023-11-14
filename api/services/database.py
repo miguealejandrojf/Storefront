@@ -25,7 +25,7 @@ def get_store(name, user_id):
     return parse_json(client.database["store"].find_one({"name": name, "user_id": user_id}))
 
 def get_stores(user_id):
-    return parse_json(client.database["store"].find({"user_id": user_id}))
+    return parse_json(client.database["store"].find({"user_id": user_id})) 
 
 def parse_json(data):
     return json.loads(json_util.dumps(data))

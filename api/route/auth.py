@@ -12,10 +12,9 @@ def user():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        print(username, email, password)
-
         user_result = create_user(username, email, password)
-        login_user(User(user_result["_id"]["$oid"]))
+        login_user(decodeUser(user_result))
+
         return redirect(url_for("dashboard"))
     
     email_param = request.args.get("email")
@@ -23,7 +22,13 @@ def user():
 
     response = get_user(email_param, psswd_param)
     if response:
-        login_user(User(response["_id"]["$oid"]))
+        login_user(decodeUser(response))
         return redirect(url_for("dashboard"))
     
     return redirect(url_for("login"))
+
+def decodeUser(user_data) -> User:
+    user_id = user_data["_id"]["$oid"]
+    user_name = user_data["username"]
+    user_email = user_data["email"]
+    return User(user_id, user_name, user_email)

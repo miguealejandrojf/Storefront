@@ -2,8 +2,10 @@ import secrets
 from flask import Flask, render_template
 from flask_login import LoginManager, login_required, current_user
 from api.model.user import User
+from api.model.store import Store
 from api.route.auth import auth_bp
-from api.route.store import store_bp
+from api.route.store import store_bp, decodeStore
+from api.services.database import get_stores
 
 app = Flask(__name__)
 app.register_blueprint(auth_bp, url_prefix="/api")
@@ -33,7 +35,13 @@ def create_account():
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    return render_template("dashboard.html", data=current_user.id)
+    stores = get_stores(current_user.id)
+
+    result = []
+    for store in stores:
+        result.append(decodeStore(store))
+
+    return render_template("dashboard.html", data=result)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
