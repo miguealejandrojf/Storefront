@@ -1,22 +1,47 @@
-.second-section{
-    height: 900px;
-    width: 1900px;
+#second-section{
+    height: 100dvh;
+    position: relative;
   }
-  
-  
-  .first-part{
-    height: 900px;
-    width: 960px;
-    background-image: url("../img/maimi-pic2\ -\ Copy.jpg");
-    background-repeat: no-repeat;
-    background-size:cover ;
-    display: flex;
+  .miami-pic{
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 100dvh;
   }
-  .second-part{
-    width:50%;
-    background-color: rgba(249,240,56,255);
+  .aboutUs-section{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
     border-style: solid;
     border-width: 0;
+    background-color: #2abba8;
+    width: 50%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
   }
+  .header3{
+    font-size: 4vw;
+    margin-bottom: 12px;
+  }
+  .about-button-description{
+    text-align: center;
+    font-size: 1.5vw;
+    line-height: 45px;
+    max-width: 700px;
+    margin-top: 0;
+    font-family: graphik-medium, sans-serif;
+  
+  }
+  @media (max-width: 992px) {
+    .about-button-description{
+      font-size: 21px;
+      line-height: 31px;
+    }
+  
+  }
+  
   
   

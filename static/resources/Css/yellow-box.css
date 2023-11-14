@@ -10,9 +10,14 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: feauture-bold;
+  src: url(../fonts/FeatureDisplay-Bold-Trial.otf) format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
 .first-section{
-  height: 900px;
-  width: 1900px;
+  height: 100dvh;
   background-image: url("../img/Background-pic1\ -\ Copy.jpeg");
   background-repeat: no-repeat;
   background-size:cover ;
@@ -20,10 +25,10 @@
 
 
 .Whole-yellow-box{
-  background-color: rgba(249,240,56,255);
+  background-color:#2abba8;
   border: 1px;
-  height: 667px;
-  width: 962px;
+  height: 80%;
+  width: 50%;
   position: relative;
   top: -10px;
   left: -10px;
@@ -32,15 +37,37 @@
   z-index: 0;
 
 }
+@media (max-width: 992px) {
+  .Whole-yellow-box{
+    width: 100%;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+  }
+}
 .inside-box{
   border-width: 2px;
   border-color: black;
   border-style: solid;
-  height: 147px;
-  width: 147px;
+  height: 14.7rem;
+  width: 14.7rem;
   position: absolute;
-  left: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 10%;
   top: 70px;
+}
+@media (max-width: 1000px) {
+  .inside-box{
+    left: 45px;
+    top: 30px;
+    height: 30%;
+    width: 12%;
+
+  }
 }
 .inside-box-text{
   color: black;
@@ -48,38 +75,56 @@
   font-weight: 400;
   font-family: graphik-normal,sans-serif;
   position: absolute;
-  margin-left: 25px;
+  text-align: center;
   bottom: 0;
+}
+@media (max-width: 1000px) {
+  .inside-box-text{
+    font-size: 3rem;
+
+  }
 }
 .description-text{
   position: absolute;
-  height: 280px;
-  width: 690px;
+  height: 39%;
+  width: 74%;
   bottom: 0;
   line-height: 60px;
   font-family: graphik-normal,sans-serif;
   display: flex;
   flex-direction: column;
-  margin-left: 160px;
-  margin-bottom: 40px;
+  margin-left: 10%;
+  margin-bottom: 5%;
+}
+@media (max-width: 800px) {
+  .description-text{
+    margin-bottom: 50px;
+    width: 90%;
+
+  }
 }
 
 
-
 .header1{
-
-
   font-weight: 700;
-  font-size: 60px;
+  font-size: 3.2vw;
   line-height: 60px;
   margin-bottom: 0;
+}
+@media (max-width: 992px) {
+  .header1{
+    font-size: 4rem;
+  }
 }
 .header2{
   margin-top: 0;
   line-height: 27px;
-  font-size: 18px;
+  font-size: 1.08vw;
   font-family: graphik-medium,sans-serif;
-
   margin-block-end: 0;
 }
-
+@media (max-width: 992px) {
+  .header2{
+    font-size: 2rem;
+  }
+}

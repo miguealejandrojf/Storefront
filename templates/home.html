@@ -6,10 +6,11 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="x-icon" href="Store-front-logo%202.jpeg">
-  <link rel="stylesheet" href="static/resources/Css/yellow-box.css">
-  <link rel="stylesheet" href="static/resources/Css/general.css">
-  <link rel="stylesheet" href="static/resources/Css/header.css">
-  <link rel="stylesheet" href="static/resources/Css/second-section.css">
+  <link rel="stylesheet" href="../static/resources/Css/yellow-box.css">
+  <link rel="stylesheet" href="../static/resources/Css/general.css">
+  <link rel="stylesheet" href="../static/resources/Css/header.css">
+  <link rel="stylesheet" href="../static/resources/Css/second-section.css">
+  <link rel="stylesheet" href="../static/resources/Css/third.section.css">
   <title>Store Front</title>
 </head>
 <body>
@@ -24,11 +25,11 @@
         </div>
         <div class="profile-container">
           <a href="{{ url_for('login')}}">
-            <button class="profile-button"><img class="profile-pic"  src="static/resources/icons/profile-icon2.svg" ></button>
+            <button class="profile-button"><img class="profile-pic"  src="../static/resources/icons/profile-icon2.svg" ></button>
           </a>
         </div>
         <div class="home-container">
-          <button class="home-button"><img class="home-pic" src="static/resources/icons/home-icon.svg"></button>
+          <button class="home-button"><img class="home-pic" src="../static/resources/icons/home-icon.svg"></button>
         </div>
       </div>
 
@@ -42,16 +43,44 @@
       <div class="description-text">
         <p class="header1">Inventory Management System</p>
         <p class="header2">We're a company that what's you to focus more on running your
-          business and less worried about managing your Inventory <a href="https://google.com">&#8594</a>
+          business and less worried about managing your Inventory <a href="#second-section">&#8594</a>
         </p>
       </div>
     </div>
   </div>
 
-  <div class="second-section">
-    <div class="first-part"></div>
-    <div class="second-part"></div>
+  <div id="second-section">
+    <img class="miami-pic" src="../static/resources/img/mimai-pic3 - Copy.jpeg">
+    <div class="aboutUs-section">
+        <h1  class="header3">About Us</h1>
+        <p class="about-button-description">Welcome to Store Front, a Miami-based startup dedicated to transforming inventory management. Founded by a visionary team,
+          our mission is clear: empower businesses of all sizes with streamlined solutions. At Store front, we understand the importance of
+          efficient inventory control, offering tailor-made systems adaptable to your unique needs. Our user-friendly interface ensures
+          simplicity in managing stock, allowing you to focus on business growth. What sets us apart is our commitment to providing
+          dedicated support, ensuring you're never alone on your journey. Join us at Store Front and experience a new era of
+          efficient, customizable, and user-centric inventory management.</p>
+    </div>
   </div>
+
+  <div id="third-section">
+    <div class=support-layout>
+      <h1 class="support-title">Contact Us</h1>
+      <div class="support-section">
+        <div class="box1">
+          <img class="support-icons" src="../static/resources/icons/phone-icon.svg">
+          <h1 class="box-title">Talk to a team member</h1>
+          <p>We'll help you find the right product and pricing for your business</p>
+          <button class="number-button">Contact Number: (305) 947-6900 </button>
+        </div>
+        <div class="box2">
+          <img class="support-icons" src="../static/resources/icons/email-icon.svg" alt="">
+          <h1 class="box-title">Email our support team</h1>
+          <p>We'll help you find the right product and pricing for your business</p>
+          <button class="email-button">Email Address: StoreFront@gmail.com</button>
+        </div>
+      </div>
+  </div>
+</div>
 </body>
 
 </html>
