@@ -92,16 +92,16 @@
 
     <!-- The form -->
     <div class="form-popup" id="myForm">
-        <form class="form-container">
+        <form class="form-container" id="createStoreForm">
             <h1>Add New Store</h1>
         
             <label for="name"><b>Name</b></label>
             <input type="text" placeholder="Enter name" id="name" required>
         
-            <label for="location"><b>Location</b></label>
-            <input type="text" placeholder="Enter Location" id="location" required>
+            <label for="direction"><b>Location</b></label>
+            <input type="text" placeholder="Enter Location" id="direction" required>
         
-            <button type="submit" class="btn" onclick="addStore( {{ current_user.id }} )">Add</button>
+            <button type="submit" class="btn">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
@@ -114,10 +114,16 @@
             document.getElementById("myForm").style.display = "none";
         }
 
-        function addStore(user_id) {
+        let loginForm = document.getElementById("createStoreForm");
+
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
 
             const name = document.getElementById("name").value;
             const direction = document.getElementById("direction").value;
+            const user_id = "{{ current_user.id }}";
+
+            console.log(name, direction, user_id);
 
             // Create FormData object
             const formData = new FormData();
@@ -146,7 +152,7 @@
                 console.error('Error:', error);
                 // Handle errors here
             });
-            }
+            })
     </script>
 </body>
 </html>
