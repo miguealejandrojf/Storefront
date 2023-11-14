@@ -149,12 +149,12 @@ body {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
-            .then(response => {
-              console.log(response.json());
-            })
             .then(data => {
-              console.log(data)
-            });
+              window.location.replace(data.url)
+            })
+            .then(response => {
+              
+            })
 
             password.value = "";
             email.value="";

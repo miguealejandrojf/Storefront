@@ -9,12 +9,23 @@ uri = "mongodb+srv://user:LzUpny51D1aEkT0H@cluster.pqach9q.mongodb.net/?retryWri
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 def create_user(username, email, password):
-    user = {"username": username, "email": email, "password": password}
-    client.database["user"].insert_one(user)
-    return get_user(email, password)
+    client.database["user"].insert_one({"username": username, "email": email, "password": password})
+    user = get_user(email, password)
+    return user
 
 def get_user(email, password):
     return parse_json(client.database["user"].find_one({"email": email, "password":password}))
+
+def create_store(name, direction, user_id):
+    store = {"name": name, "direction": direction, "user_id": user_id}
+    client.database["store"].insert_one(store)
+    return get_store(name, user_id)
+
+def get_store(name, user_id):
+    return parse_json(client.database["store"].find_one({"name": name, "user_id": user_id}))
+
+def get_stores(user_id):
+    return parse_json(client.database["store"].find({"user_id": user_id}))
 
 def parse_json(data):
     return json.loads(json_util.dumps(data))
