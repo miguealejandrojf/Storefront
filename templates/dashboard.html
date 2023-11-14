@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="home.html">
+    <title> Dashboard </title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="navbar">
+                <h1>Dashboard</h1>
+            </div>
+            <ul>
+                <li><a href="#">
+                    <i class="fas fa-user"></i> 
+                    <span class="nav-list">Switch Account</span>
+                </a>
+                </li>
+                <li><a href="#">
+                    <i class="fas fa-store"></i> 
+                    <span class="nav-list">Add Store</span>
+                </a>
+                </li>
+                <li><a href="#">
+                    <i class="fas fas fa-tshirt"></i> 
+                    <span class="nav-list">Add Item</span>
+                </a>
+                </li>
+                <li><a href="#">
+                    <i class="fas fas fa-cog"></i> 
+                    <span class="nav-list">Settings</span>
+                </a>
+                </li>
+                <li><a href="home.html" class="logout">
+                    <i class="fas fas fas fa-sign-out-alt"></i> 
+                    <span class="nav-list">Logout</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="main">
+            <div class="main-container">
+                <h1>Store Name</h1>
+            </div>
+            <div class="search-bar">
+                <input type="search" placeholder="Search inventory...">
+                <select name="" id="">
+                    <option>Category</option>
+                    <option>Bottoms</option>
+                    <option>Furniture</option>
+                    <option>Home</option>
+                    <option>Jewelry</option>
+                    <option>Kitchen</option>
+                    <option>Shirts</option>
+                    <option>Shoes</option>
+                </select>
+                <select class="filter">
+                    <option>Filter</option>
+                </select>
+            </div>
+
+            <div class="inventory-count">
+                <p>There are <span>-count-</span> items in inventory</p>
+            </div>
+
+            <section class="inventory">
+                <div class="inventory-list">
+                    <h1>Inventory</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serial Number</th>
+                                <th>Category</th>
+                                <th>Gender</th>
+                                <th>Brand</th>
+                                <th>In Stock</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- input by person -->
+                            <tr>
+                                <td>06090009587</td>
+                                <td>Shirt</td>
+                                <td>Female</td>
+                                <td>Polo</td>
+                                <td>56</td>
+                                <td><button>View</button></td>
+                            </tr>
+                            <tr>
+                                <td>06090009003</td>
+                                <td>Shoes</td>
+                                <td>Male</td>
+                                <td>Nike</td>
+                                <td>7</td>
+                                <td><button>View</button></td>
+                            </tr>
+                            <tr>
+                                <td>06090009890</td>
+                                <td>Kitchen</td>
+                                <td>N/A</td>
+                                <td>KitchenAid</td>
+                                <td>13</td>
+                                <td><button>View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </div>
+</body>
+</html>

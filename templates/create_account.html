@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="login.html">
 <title> Create account </title>
 </head>
 <body>
@@ -77,6 +78,26 @@ margin-bottom: 26px;
   margin: 0 auto;
 }
 
+#username:hover{
+  background-color: #e1dede;
+}
+
+#email:hover{
+  background-color: #e1dede;
+}
+
+#password:hover{
+  background-color: #e1dede;
+}
+
+#submit:hover{
+  background-image: linear-gradient(45deg,#25706c,#05843a);
+}
+
+#login-effect:hover{
+  text-decoration: underline;
+}
+
 body {
   background-color: #328f8a;
   background-image: linear-gradient(45deg,#328f8a,#08ac4b);
@@ -91,7 +112,7 @@ body {
       <div class="form">
         <div class="login">
           <div class="login-header">
-            <h3>LOGIN</h3>
+            <h3>CREATE ACCOUNT</h3>
             <p>Please enter your credentials to create account.</p>
           </div>
         </div>
@@ -99,8 +120,8 @@ body {
           <input type="text" placeholder="username" id="username"/>
           <input type="email" placeholder="email" id="email"/>
           <input type="password" placeholder="password" id="password"/>
-          <button type="submit">Create</button>
-          <p class="message">Already have an account? <a href="{{ url_for('login')}}"> Log in</a></p>
+          <button type="submit" id="submit">Create</button>
+          <p class="message">Already have an account? <a href="login.html" id="login-effect"> Log in</a></p>
         </form>
       </div>
     </div>
