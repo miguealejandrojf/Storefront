@@ -1,17 +1,7 @@
-/* dont like */
-/* *{
-    margin: 0;
-    padding: 0;
-    outline: none;
-} */
-
 body{
     background: rgb(233, 233, 233);
-    /* background-color: #328f8a; */
-    /* background: lightgreen; */
-    /* background-image: linear-gradient(45deg,#328f8a,#08ac4b); */
 }
-/* dont like */
+
 .container{ 
     display: flex;
     width: 1200px;
@@ -25,7 +15,6 @@ nav{
     width: 280px;
     height: 97vh;
     background: #fff;
-    /* background: rgb(106, 215, 106); */
     border-radius: 5px;
 }
 h1{
@@ -69,30 +58,27 @@ nav i{
 }
 
 .main-container{
-    padding: 10px 10px 10px 20px;
-}
+    padding: 10px 10px 0px 20px;
+} 
 
 .main-container h1{
-    margin: 20px 10px;
+    font-size: 30px;
+    margin: 20px 13px;
 }
 
 .search-bar{
     display: flex;
     padding: 10px;
-    justify-content: space-between;
+    justify-content: left;
 }
 
 .search-bar input{
-    padding: 5px;
+    padding: 9px;
     margin-left: 22px;
     width: 500px;
     border: 1px solid rgb(190, 190, 190);
     border-radius: 5px;
-}
-
-.search-bar input:focus{
-    /* change color */
-    border: 1px solid #17B169;
+    font-size: 14px;
 }
 
 .search-bar select{
@@ -100,6 +86,7 @@ nav i{
     padding: 10px;
     margin-left: 2rem;
     width: 150px;
+    font-size: 14px;
 }
 
 .search-bar .filter{
@@ -114,7 +101,6 @@ nav i{
 }
 
 p span{
-    /* change color */
     color: #17B169;
 }
 
@@ -126,11 +112,16 @@ p span{
 .inventory-list{
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 20px 35px black;
+    box-shadow: 0 8px 22px black;
+    margin-right: 250px;
     margin-top: 10px;
     margin-left: 3%;
     padding: 10px;
     width: 100%;
+}
+
+.store-list{
+    padding: 10px;
 }
 
 .table{
@@ -167,13 +158,11 @@ table thead tr{
 
 .table button:hover{
     cursor: pointer;
-    border: black;
+    border: rgb(76, 76, 76);
     box-shadow: 1px 1px;
-    border-radius: 2px;
+    border-radius: 5px;
+    background-color: rgb(211, 211, 211);
 }
-
-
-{box-sizing: border-box;}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
