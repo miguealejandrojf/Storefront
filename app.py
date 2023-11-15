@@ -6,7 +6,7 @@ from api.model.store import Store
 from api.route.auth import auth_bp
 from api.route.store import store_bp, decodeStore
 from api.route.item import item_bp, decodeItem
-from api.services.database import get_stores, get_store, get_items
+from api.services.database import get_stores, get_store, get_items, get_item
 
 app = Flask(__name__)
 app.register_blueprint(auth_bp, url_prefix="/api")
@@ -57,6 +57,17 @@ def store():
         items_result.append(decodeItem(item))
 
     return render_template("store.html", data=store_result, items=items_result)
+
+@app.route("/item")
+@login_required
+def item():
+    item_id = request.args.get("item_id")
+    print(item_id)
+    item_get = get_item(item_id=item_id)
+    print(item_get)
+    item_result = decodeItem(item_get)
+
+    return render_template("product.html", data=item_result)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

@@ -75,7 +75,7 @@
                                 <td>{{ item.brand }}</td>
                                 <td>{{ item.price }}</td>
                                 <td>{{ item.image }}</td>
-                                <td><button onclick="detailProduct()">View</button></td>
+                                <td><button onclick="detailItem('{{item.id}}')">View</button></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -117,8 +117,24 @@
             document.getElementById("myForm").style.display = "none";
         }
 
-        function detailItem(item_ic) {
-            
+        function detailItem(item_id) {
+            const data = { "item_id": item_id }
+
+            const apiUrl = "http://127.0.0.1:8000/item?"
+            const queryStr = new URLSearchParams(data).toString()
+
+            fetch(apiUrl + queryStr, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            .then(data => {
+                window.location.replace(data.url)
+            })
+            .then(response => {
+              
+            })
         }
 
     </script>

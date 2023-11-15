@@ -35,7 +35,7 @@ def create_item(store_id, name, brand, price, image_url):
     return item
 
 def get_item(store_id=None, name=None, item_id=None):
-    if not item_id:
+    if item_id != None:
         return parse_json(client.database["item"].find_one({"_id": ObjectId(item_id)}))
     return parse_json(client.database["item"].find_one({"store_id": store_id, "name": name}))
 

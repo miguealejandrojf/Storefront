@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="static/resources/Css/styleProductDetails.css">
+</head>
+<body>
+
+
+    <div class="small-container single-product">
+        <div class="inside-box">
+            <div class="inside-box-text">
+              Store Front
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <p>{{ data.name }}</p>
+                <h1>H&M Black T-Shirt</h1>
+                <div class="col-img1">
+                    <div class="col-img">
+                        <img src="resources/imgProduct/blackhym1.jpeg" width="55%" id="ProductImg">
+                    </div>
+                    <div class="small-img-row">
+                        <div class="small-img-col">
+                            <img src="resources/imgProduct/blackhym1.jpeg" width="20%" class="small-img">
+                            <img src="resources/imgProduct/blackhym2.jpeg " width="20%" class="small-img">
+                            <img src="resources/imgProduct/blackhym3.jpeg" width="20%" class="small-img">
+                            <img src="resources/imgProduct/black1.jpeg" width="20%" class="small-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-2 col-details">
+                    <select>
+                        <option>Select Size</option>
+                        <option>XXL</option>
+                        <option>XL</option>
+                        <option>Large</option>
+                        <option>Medium</option>
+                        <option>Small</option>
+                    </select>
+                    <!--There should be a dinamic variable here to display the number of tshirts of that model and size-->
+                    <h3>Number of Items: ** </h3>
+                    <br>
+                    <h2>${{data.price}}</h2>
+
+                    <h3>Product Details</h3>
+                    <p>Regular-fit T-shirt in soft cotton jersey. <br>
+                        Ribbed crew neck and a straight-cut hem.<br><br>
+
+                        Article Code: {{ data.id }}<br>
+                        Model size: The model is 186cm/6'1" and wears a size L<br>
+                        Length: Regular length<br>
+                        Sleeve Length: Short sleeve<br>
+                        Fit: Regular fit<br>
+                        Neckline: Round Neck<br>
+                        Description: Gray melange, Solid-color<br>
+                        Imported: Yes<br>
+                        Concept: BASICS
+                    </p>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+    
+
+
+
+<!--js for product gallery-->
+
+<script>
+    var ProductImg = document.getElementById("ProductImg");
+    var SmallImg = document.getElementsByClassName("small-img");
+
+    SmallImg[0].onclick = function()
+    {
+        ProductImg.src = SmallImg[0].src;
+    }
+    SmallImg[1].onclick = function()
+    {
+        ProductImg.src = SmallImg[1].src;
+    }
+    SmallImg[2].onclick = function()
+    {
+        ProductImg.src = SmallImg[2].src;
+    }
+    SmallImg[3].onclick = function()
+    {
+        ProductImg.src = SmallImg[3].src;
+    }
+
+
+</script>
+
+</body>
+</html>
