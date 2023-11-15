@@ -10,8 +10,15 @@
     right: 0;
     margin-right: 40px;
     margin-top: 50px;
-    justify-content: center;
+    justify-content: right;
+    z-index: 100;
   
+  }
+  @media (max-width: 1000px) {
+    .top-header{
+      margin-top: 20px;
+     justify-content: right;
+    }
   }
   .right-side {
     display: flex;
@@ -21,47 +28,62 @@
     height: 54px;
     width: 155px;
     border-radius: 77px;
-    background-color:rgba(249,240,56,255);
+    background:linear-gradient(to top right, #2abba8, #32CD32);
     border-width: 0;
     font-family:"Trebuchet MS",sans-serif ;
-    font-size: 21px;
+    font-size: 2.1rem;
     font-weight: 500;
     flex: 1;
     margin-right: 17px;
-  
+    transition: opacity 0.3s;
+    cursor: pointer;
+  }
+  .about-button:hover{
+    opacity: 0.8;
   }
   .support-button{
     height: 54px;
     width: 155px;
     border-radius: 77px;
-    background-color:rgba(249,240,56,255);
+    background:linear-gradient(to top right, #2abba8, #32CD32);
     border-width: 0;
     font-family:"Trebuchet MS",sans-serif ;
-    font-size: 21px;
+    font-size: 2.1rem;
     font-weight: 500;
     flex: 1;
     margin-right: 17px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .support-button:hover{
+    opacity: 0.8;
   }
   .profile-button{
     height: 54px;
     width: 54px;
     border-radius: 27px;
-    background-color:rgba(249,240,56,255);
+    background:linear-gradient(to top right, #2abba8, #32CD32);
     border-width: 0;
     flex: 1;
-    margin-right: 17px
-  
-  
+    margin-right: 17px;
+    transition: opacity 0.3s;
+    cursor: pointer;
+  }
+  .profile-button:hover{
+    opacity: 0.8;
   }
   .home-button{
     height: 54px;
     width: 54px;
     border-radius: 27px;
-    background-color:rgba(249,240,56,255);
+    background:linear-gradient(to top right, #2abba8, #32CD32);
     border-width: 0;
     flex: 1;
-  
-  
+    transition: opacity 0.3s;
+    cursor: pointer;
+  }
+  .home-button:hover{
+    opacity: 0.8;
   }
   .profile-pic{
     height: 28px;
@@ -69,4 +91,22 @@
   .home-pic{
     height: 28px;
   }
-  
+  @media (max-width: 1000px) {
+    .about-button,.support-button,.profile-button,.home-button{
+      background-color: cadetblue;
+    }
+  }
+  @media (max-width: 1000px) {
+    .about-button,.support-button {
+      font-size: 17px;
+      height: 44px;
+      width: 105px;
+    }
+  }
+  @media (max-width: 1000px) {
+    .profile-button,.home-button{
+      height: 42px;
+      width: 42px;
+      border-radius:21px ;
+    }
+  }
