@@ -12,16 +12,19 @@ def stores():
 @store_bp.route("/store", methods=["GET", "POST"])
 def store():
     if request.method == "POST":
-        name = request.form.get("name")
-        location = request.form.get("direction")
-        user_id = request.form.get("user_id")
+        data = request.get_json()
+        name = data.get("name")
+        location = data.get("direction")
+        user_id = data.get("user_id")
+
+        print(name, location, user_id)
 
         store_result = create_store(name, location, user_id)
-        return get_store(name, user_id)
+        return get_store(name=name, user_id=user_id)
     
     name = request.args.get("name")
     user_id = request.args.get("user_id")
-    return get_store(name, user_id)
+    return get_store(name=name, user_id=user_id)
 
 def decodeStore(store_data) -> Store:
     store_id = store_data["_id"]["$oid"]

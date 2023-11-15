@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/resources/Css/dashboard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='resources/Css/dashboard.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <title> Dashboard </title>
 </head>
@@ -12,17 +12,17 @@
     <div class="container">
         <nav>
             <div class="navbar">
-                <h1>Dashboard</h1>
+                <h1>Store View</h1>
             </div>
             <ul>
-                <li><a href="#">
+                <li><a href="{{url_for('dashboard')}}">
                     <i class="fas fa-user"></i> 
-                    <span class="nav-list">Switch Account</span>
+                    <span class="nav-list">Back to Dashboard</span>
                 </a>
                 </li>
                 <li><a href="#">
                     <i class="fas fa-store"></i> 
-                    <span class="nav-list" onclick="showForm()">Add Store</span>
+                    <span class="nav-list" onclick="showForm()">Add Item</span>
                 </a>
                 </li>
                 <li><a href="#">
@@ -40,7 +40,7 @@
 
         <section class="main">
             <div class="main-container">
-                <h1>Store Name</h1>
+                <h1>{{ data.name }}</h1>
             </div>
             <div class="search-bar">
                 <input type="search" placeholder="Find Store...">
@@ -67,16 +67,14 @@
                         </thead>
                         <tbody>
                             <!-- input by person -->
-                            {% for store in data %}
                             <tr>
-                                <td>{{ store.id }}</td>
-                                <td>{{ store.name }}</td>
-                                <td>{{ store.direction }}</td>
                                 <td></td>
                                 <td></td>
-                                <td><button onclick="detailStore('{{ store.id }}')">View</button></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button onclick="detailStore('')">View</button></td>
                             </tr>
-                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -111,7 +109,7 @@
         }
 
         function detailStore(store_id) {
-            window.location.replace('/store/' + store_id)
+            
         }
 
     </script>

@@ -5,7 +5,7 @@ from api.model.user import User
 from api.model.store import Store
 from api.route.auth import auth_bp
 from api.route.store import store_bp, decodeStore
-from api.services.database import get_stores
+from api.services.database import get_stores, get_store
 
 app = Flask(__name__)
 app.register_blueprint(auth_bp, url_prefix="/api")
@@ -42,6 +42,12 @@ def dashboard():
         result.append(decodeStore(store))
 
     return render_template("dashboard.html", data=result)
+
+@app.route("/store/<store_id>")
+@login_required
+def store(store_id=None):
+    store_data = get_store(store_id=store_id)
+    return render_template("store.html", data=store_data)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

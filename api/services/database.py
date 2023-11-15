@@ -1,6 +1,6 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from bson import json_util
+from bson import json_util, ObjectId
 import json
 
 uri = "mongodb+srv://user:LzUpny51D1aEkT0H@cluster.pqach9q.mongodb.net/?retryWrites=true&w=majority"
@@ -19,9 +19,11 @@ def get_user(email, password):
 def create_store(name, direction, user_id):
     store = {"name": name, "direction": direction, "user_id": user_id}
     client.database["store"].insert_one(store)
-    return get_store(name, user_id)
+    return get_store(name=name, user_id=user_id)
 
-def get_store(name, user_id):
+def get_store(name=None, user_id=None, store_id=None):
+    if store_id != None:
+        return parse_json(client.database["store"].find({"_id": ObjectId(store_id)}))
     return parse_json(client.database["store"].find_one({"name": name, "user_id": user_id}))
 
 def get_stores(user_id):
