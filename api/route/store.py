@@ -17,10 +17,8 @@ def store():
         location = data.get("direction")
         user_id = data.get("user_id")
 
-        print(name, location, user_id)
-
         store_result = create_store(name, location, user_id)
-        return get_store(name=name, user_id=user_id)
+        return store_result
     
     name = request.args.get("name")
     user_id = request.args.get("user_id")

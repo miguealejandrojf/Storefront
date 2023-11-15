@@ -43,23 +43,24 @@
                 <h1>{{ data.name }}</h1>
             </div>
             <div class="search-bar">
-                <input type="search" placeholder="Find Store...">
+                <input type="search" placeholder="Find Product...">
                 <select name="" id="">
                     <option>Name</option>
-                    <option>Location</option>
-                    <option>Store ID</option>
+                    <option>Brand</option>
+                    <option>Item ID</option>
+                    <option>Price</option>
                 </select>
             </div>
 
             <section class="store-list">
                 <div class="inventory-list">
-                    <h1>Stores</h1>
+                    <h1>Items</h1>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Store ID</th>
+                                <th>Item ID</th>
                                 <th>Name</th>
-                                <th>Location</th>
+                                <th>Price</th>
                                 <th>Brand</th>
                                 <th>In Stock</th>
                                 <th>Details</th>
@@ -67,14 +68,16 @@
                         </thead>
                         <tbody>
                             <!-- input by person -->
+                            {% for item in items %}
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><button onclick="detailStore('')">View</button></td>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.brand }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>{{ item.image }}</td>
+                                <td><button onclick="detailProduct()">View</button></td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -84,18 +87,24 @@
 
     <!-- The form -->
     <div class="form-popup" id="myForm">
-        <form class="form-container" id="createStoreForm">
-            <h1>Add New Store</h1>
+        <form class="form-container" id="createItemForm">
+            <h1>Add New Item</h1>
         
             <label for="name"><b>Name</b></label>
             <input type="text" placeholder="Enter name" id="name" name="name" required>
         
-            <label for="direction"><b>Location</b></label>
-            <input type="text" placeholder="Enter Location" id="direction" name="direction" required>
+            <label for="brand"><b>Brand</b></label>
+            <input type="text" placeholder="Enter brand" id="brand" name="brand" required>
 
-            <input type="text" name="user_id" id="user_id" style="display: none;" value="{{ current_user.id }}" readonly>
+            <label for="price"><b>Price</b></label>
+            <input type="text" placeholder="Enter price" id="price" name="price" required>
+
+            <label for="image"><b>Image URL</b></label>
+            <input type="text" placeholder="Enter image url" id="image" name="image" required>
+
+            <input type="text" name="user_id" id="store_id" style="display: none;" value="{{ data.id }}" readonly>
         
-            <button type="submit" class="btn" onclick="submitForm()">Add</button>
+            <button type="button" class="btn" onclick="submitForm()">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
@@ -108,7 +117,7 @@
             document.getElementById("myForm").style.display = "none";
         }
 
-        function detailStore(store_id) {
+        function detailItem(item_ic) {
             
         }
 
@@ -117,32 +126,33 @@
             function submitForm() {
                 // Get form data
                 const name = document.getElementById('name').value;
-                const direction = document.getElementById('direction').value;
-                const user_id = document.getElementById('user_id').value;
-    
+                const brand = document.getElementById('brand').value;
+                const price = document.getElementById('price').value;
+                const image = document.getElementById('image').value;
+                const store_id = document.getElementById('store_id').value;
+
                 // Create data object
                 const formData = {
                     "name": name,
-                    "direction": direction,
-                    "user_id": user_id
+                    "brand": brand,
+                    "price": price,
+                    "image_url": image,
+                    "store_id": store_id
                 };
-    
+
                 // Make the POST request
-                fetch('/api/store', {
+                fetch('/api/item', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData),
                 })
-                .then(response => response.json())
                 .then(data => {
                     // Handle the response data here (if needed)
                     console.log('Server Response:', data);
+                    window.location.reload();
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
             }
         </script>
 </body>

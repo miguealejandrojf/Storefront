@@ -1,15 +1,17 @@
 import secrets
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_login import LoginManager, login_required, current_user
 from api.model.user import User
 from api.model.store import Store
 from api.route.auth import auth_bp
 from api.route.store import store_bp, decodeStore
-from api.services.database import get_stores, get_store
+from api.route.item import item_bp, decodeItem
+from api.services.database import get_stores, get_store, get_items
 
 app = Flask(__name__)
 app.register_blueprint(auth_bp, url_prefix="/api")
 app.register_blueprint(store_bp, url_prefix="/api")
+app.register_blueprint(item_bp, url_prefix="/api")
 
 app.config["SECRET_KEY"] = secrets.token_hex(24)
 
@@ -43,11 +45,18 @@ def dashboard():
 
     return render_template("dashboard.html", data=result)
 
-@app.route("/store/<store_id>")
+@app.route("/store")
 @login_required
-def store(store_id=None):
-    store_data = get_store(store_id=store_id)
-    return render_template("store.html", data=store_data)
+def store():
+    store_id = request.args.get("store_id")
+    store_result = decodeStore(get_store(store_id=store_id))
+    
+    items_result = []
+    items = get_items(store_id=store_id)
+    for item in items:
+        items_result.append(decodeItem(item))
+
+    return render_template("store.html", data=store_result, items=items_result)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

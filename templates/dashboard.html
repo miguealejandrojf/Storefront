@@ -111,7 +111,23 @@
         }
 
         function detailStore(store_id) {
-            window.location.replace('/store/' + store_id)
+            const data = { "store_id": store_id }
+
+            const apiUrl = "http://127.0.0.1:8000/store?"
+            const queryStr = new URLSearchParams(data).toString()
+
+            fetch(apiUrl + queryStr, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            .then(data => {
+                window.location.replace(data.url)
+            })
+            .then(response => {
+              
+            })
         }
 
     </script>
