@@ -15,9 +15,9 @@
                 <h1>Dashboard</h1>
             </div>
             <ul>
-                <li><a href="#">
+                <li><a href="{{url_for('home')}}">
                     <i class="fas fa-user"></i> 
-                    <span class="nav-list">Switch Account</span>
+                    <span class="nav-list">Home</span>
                 </a>
                 </li>
                 <li><a href="#">
@@ -30,7 +30,7 @@
                     <span class="nav-list">Settings</span>
                 </a>
                 </li>
-                <li><a href="" class="logout">
+                <li><a href="{{url_for('home')}}" class="logout">
                     <i class="fas fas fas fa-sign-out-alt"></i> 
                     <span class="nav-list">Logout</span>
                 </a>
@@ -59,9 +59,9 @@
                             <tr>
                                 <th>Store ID</th>
                                 <th>Name</th>
-                                <th>Location</th>
-                                <th>Brand</th>
-                                <th>In Stock</th>
+                                <th>City</th>
+                                <th>Zip Code</th>
+                                <th>Inventory Count</th>
                                 <th>Details</th>
                             </tr>
                         </thead>
@@ -92,7 +92,7 @@
             <label for="name"><b>Name</b></label>
             <input type="text" placeholder="Enter name" id="name" name="name" required>
         
-            <label for="direction"><b>Location</b></label>
+            <label for="direction"><b>City</b></label>
             <input type="text" placeholder="Enter Location" id="direction" name="direction" required>
 
             <input type="text" name="user_id" id="user_id" style="display: none;" value="{{ current_user.id }}" readonly>
