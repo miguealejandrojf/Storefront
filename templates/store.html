@@ -49,6 +49,7 @@
                     <option>Category</option>
                     <option>Price</option>
                     <option>Brand</option>
+                    <option>Quantity</option>
                 </select>
             </div>
 
@@ -62,6 +63,7 @@
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Brand</th>
+                                <th>Quantity</th>
                                 <th>Details</th>
                                 <th>section</th>
                             </tr>
@@ -74,6 +76,7 @@
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.price }}</td>
                                 <td>{{ item.brand }}</td>
+                                <td>{{  item.quantity }}</td>
                                 <td><button onclick="detailItem('{{item.id}}')">View</button></td>
                                 <td><button onclick="deleteItem('{{item.id}}')">Delete</button></td>
                             </tr>
@@ -101,6 +104,9 @@
 
             <label for="price"><b>Price</b></label>
             <input type="text" placeholder="Enter price" id="price" name="price" required>
+
+            <label for="quantity"><b>Quantity</b></label>
+            <input type="text" placeholder="Enter quantity" id="quantity" name="quantity" required>
 
             <label for="image"><b>Image URL</b></label>
             <input type="text" placeholder="Enter image url" id="image" name="image" required>
@@ -169,6 +175,7 @@
                 const brand = document.getElementById('brand').value;
                 const price = document.getElementById('price').value;
                 const image = document.getElementById('image').value;
+                const quantity = document.getElementById('quantity').value;
                 const store_id = document.getElementById('store_id').value;
 
                 // Create data object
@@ -177,6 +184,7 @@
                     "detail": detail,
                     "brand": brand,
                     "price": price,
+                    "quantity": quantity,
                     "image_url": image,
                     "store_id": store_id
                 };
@@ -208,6 +216,7 @@
                 inputMap.set("Category", 1);
                 inputMap.set("Price", 2);
                 inputMap.set("Brand", 3);
+                inputMap.set("Quantity", 4)
 
                 for (i = 0; i < tr.length; i++) {
                     var td = tr[i].getElementsByTagName("td")[inputMap.get(inputType)].innerText;

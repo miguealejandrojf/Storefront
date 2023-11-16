@@ -29,8 +29,8 @@ def get_store(name=None, user_id=None, store_id=None):
 def get_stores(user_id):
     return parse_json(client.database["store"].find({"user_id": user_id})) 
 
-def create_item(store_id, name, detail, brand, price, image_url):
-    client.database["item"].insert_one({"store_id": store_id, "name": name, "detail": detail, "brand": brand, "price": price, "image_url": image_url})
+def create_item(store_id, name, detail, brand, price, image_url, quantity):
+    client.database["item"].insert_one({"store_id": store_id, "name": name, "detail": detail, "brand": brand, "price": price, "image_url": image_url, "quantity": quantity})
     item = get_item(store_id=store_id, name=name)
     return item
 

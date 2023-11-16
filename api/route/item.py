@@ -15,7 +15,8 @@ def item():
         item_brand = item_data.get("brand")
         item_price = item_data.get("price")
         item_imageurl = item_data.get("image_url")
-        return create_item(item_storeid, item_name, item_detail, item_brand, item_price, item_imageurl)
+        item_quantity = item_data.get("quantity")
+        return create_item(item_storeid, item_name, item_detail, item_brand, item_price, item_imageurl, item_quantity)
     
     elif request.method == "DELETE":
         item_id = request.args.get("item_id")
@@ -38,4 +39,5 @@ def decodeItem(item_data) -> Item:
     item_brand = item_data["brand"]
     item_price = item_data["price"]
     item_image = item_data["image_url"]
-    return Item(item_id, store_id, item_name, item_detail, item_brand, item_price, item_image)
+    item_quantity = item_data["quantity"]
+    return Item(item_id, store_id, item_name, item_detail, item_brand, item_price, item_image, item_quantity)
