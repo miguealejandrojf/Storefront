@@ -43,8 +43,8 @@
                 <h1>StoreFront</h1>
             </div>
             <div class="search-bar">
-                <input type="search" placeholder="Find Store...">
-                <select name="" id="">
+                <input type="search" placeholder="Find Store..." id="textInput">
+                <select name="" id="selectInput">
                     <option>Name</option>
                     <option>Location</option>
                     <option>Store ID</option>
@@ -60,21 +60,19 @@
                                 <th>Store ID</th>
                                 <th>Name</th>
                                 <th>City</th>
-                                <th>Zip Code</th>
-                                <th>Inventory Count</th>
                                 <th>Details</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody  id="table">
                             <!-- input by person -->
                             {% for store in data %}
                             <tr>
                                 <td>{{ store.id }}</td>
                                 <td>{{ store.name }}</td>
                                 <td>{{ store.direction }}</td>
-                                <td></td>
-                                <td></td>
                                 <td><button onclick="detailStore('{{ store.id }}')">View</button></td>
+                                <td><button onclick="deleteStore('{{ store.id }}')">Delete</button></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -123,12 +121,60 @@
                 }
             })
             .then(data => {
-                window.location.replace(data.url)
+                window.location.replace(data.url);
             })
             .then(response => {
               
             })
         }
+
+        function deleteStore(store_id) {
+            const data = { "store_id": store_id }
+
+            const apiUrl = "http://127.0.0.1:8000/api/store?"
+            const queryStr = new URLSearchParams(data).toString()
+
+            fetch(apiUrl + queryStr, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            .then(data => {
+                window.location.reload();
+            })
+            .then(response => {
+              
+            })
+        }
+
+        document.getElementById("textInput").addEventListener("keyup", function(event) {
+                const inputType = document.getElementById("selectInput").value
+                const inputText = document.getElementById("textInput").value
+
+                if (inputText === "") {
+                    window.location.reload();
+                    return;
+                }
+
+                var table = document.getElementById("table");
+                var tr = table.getElementsByTagName("tr");
+
+                const inputMap = new Map();
+                inputMap.set("Store ID", 0);
+                inputMap.set("Name", 1);
+                inputMap.set("Location", 2);
+
+                for (i = 0; i < tr.length; i++) {
+                    var td = tr[i].getElementsByTagName("td")[inputMap.get(inputType)].innerText;
+
+                    if (td.toUpperCase().indexOf(inputText.toUpperCase()) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+        });
 
     </script>
         <script>

@@ -30,7 +30,7 @@
                     <span class="nav-list">Settings</span>
                 </a>
                 </li>
-                <li><a href="" class="logout">
+                <li><a href="{{url_for('login')}}" class="logout">
                     <i class="fas fas fas fa-sign-out-alt"></i> 
                     <span class="nav-list">Logout</span>
                 </a>
@@ -43,12 +43,12 @@
                 <h1>{{ data.name }}</h1>
             </div>
             <div class="search-bar">
-                <input type="search" placeholder="Find Product...">
-                <select name="" id="">
+                <input type="search" placeholder="Find Product..." id="textInput">
+                <select name="" id="selectInput">
+                    <option>Serial Number</option>
                     <option>Category</option>
-                    <option>Shirts</option>
-                    <option>Shoes</option>
-                    <option>Pants</option>
+                    <option>Price</option>
+                    <option>Brand</option>
                 </select>
             </div>
 
@@ -62,11 +62,11 @@
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Brand</th>
-                                <th>In Stock</th>
                                 <th>Details</th>
+                                <th>section</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table">
                             <!-- input by person -->
                             {% for item in items %}
                             <tr>
@@ -74,8 +74,8 @@
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.brand }}</td>
                                 <td>{{ item.price }}</td>
-                                <td>{{ item.image }}</td>
                                 <td><button onclick="detailItem('{{item.id}}')">View</button></td>
+                                <td><button onclick="deleteItem('{{item.id}}')">Delete</button></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -92,6 +92,9 @@
         
             <label for="name"><b>Name</b></label>
             <input type="text" placeholder="Enter name" id="name" name="name" required>
+
+            <label for="detail"><b>Details</b></label>
+            <input type="text" placeholder="Enter details" id="detail" name="detail" required>
         
             <label for="brand"><b>Brand</b></label>
             <input type="text" placeholder="Enter brand" id="brand" name="brand" required>
@@ -137,11 +140,32 @@
             })
         }
 
+        function deleteItem(item_id) {
+            const data = { "item_id": item_id }
+
+            const apiUrl = "http://127.0.0.1:8000/api/item?"
+            const queryStr = new URLSearchParams(data).toString()
+
+            fetch(apiUrl + queryStr, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            .then(data => {
+                window.location.reload();   
+            })
+            .then(response => {
+              
+            })
+        }
+
     </script>
         <script>
             function submitForm() {
                 // Get form data
                 const name = document.getElementById('name').value;
+                const detail = document.getElementById('detail').value;
                 const brand = document.getElementById('brand').value;
                 const price = document.getElementById('price').value;
                 const image = document.getElementById('image').value;
@@ -150,6 +174,7 @@
                 // Create data object
                 const formData = {
                     "name": name,
+                    "detail": detail,
                     "brand": brand,
                     "price": price,
                     "image_url": image,
@@ -170,6 +195,35 @@
                     window.location.reload();
                 })
             }
+
+            document.getElementById("textInput").addEventListener("keyup", function(event) {
+                const inputType = document.getElementById("selectInput").value
+                const inputText = document.getElementById("textInput").value
+
+                if (inputText === "") {
+                    window.location.reload();
+                    return;
+                }
+
+                var table = document.getElementById("table");
+                var tr = table.getElementsByTagName("tr");
+
+                const inputMap = new Map();
+                inputMap.set("Serial Number", 0);
+                inputMap.set("Category", 1);
+                inputMap.set("Price", 2);
+                inputMap.set("Brand", 3);
+
+                for (i = 0; i < tr.length; i++) {
+                    var td = tr[i].getElementsByTagName("td")[inputMap.get(inputType)].innerText;
+
+                    if (td.toUpperCase().indexOf(inputText.toUpperCase()) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+        });
         </script>
 </body>
 </html>

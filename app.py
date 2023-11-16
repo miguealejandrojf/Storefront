@@ -62,12 +62,8 @@ def store():
 @login_required
 def item():
     item_id = request.args.get("item_id")
-    print(item_id)
     item_get = get_item(item_id=item_id)
-    print(item_get)
-    item_result = decodeItem(item_get)
-
-    return render_template("product.html", data=item_result)
+    return render_template("product.html", data=decodeItem(item_get))
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
